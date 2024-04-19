@@ -9,10 +9,7 @@ DROP INDEX idx_nom;
 
 
 
--- Accorder l'autorisation de modification mutuelle sur la table EMP (2eme user = root1)
-GRANT SELECT, INSERT, UPDATE ON root.EMP TO user2;
-
--- schema name
+-- our monter le nom de schema de la session
 SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') AS CURRENT_SCHEMA FROM DUAL;
 
 

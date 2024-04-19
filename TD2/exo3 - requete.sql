@@ -7,7 +7,13 @@ UPDATE root.EMP
 SET salaire = 10000
 WHERE nom = 'ALAOUI2';
 
--- (Executer sur la session de l'autre utilisateur) Accorder l'autorisation de modification mutuelle sur la table EMP (2eme user = root1)
-GRANT INSERT, UPDATE ON EMP TO root1;
-GRANT INSERT, UPDATE ON EMP TO root;
+-- (Executer sur la session 1) Accorder l'autorisation
+-- de modification mutuelle sur la table EMP (2eme user = user2)
+
+-- Accorder l'autorisation de modification mutuelle sur la table EMP (2eme user = root1)
+GRANT INSERT, UPDATE ON root.EMP TO user2;
+
+-- 
+    -- Après avoir créer les même table dans le schema user2
+GRANT INSERT, UPDATE ON user2.EMP TO root;
 
