@@ -78,14 +78,16 @@ SELECT p1.ref_mag, p2.ref_mag
 FROM provenance p1
 JOIN provenance p2 ON p1.ref_prod = p2.ref_prod AND p1.ref_usine = p2.ref_usine AND p1.ref_mag <> p2.ref_mag;
 
+
+
 -- 13. La même chose en affichant les noms des magasins (utiliser NATURAL JOIN à  bon escient)
 -- Note: Faites des jointure deux fois avec la table magasin
 SELECT m1.nom_mag, m2.nom_mag
 FROM provenance p1
-NATURAL JOIN provenance p2
+JOIN provenance p2 ON p1.ref_prod = p2.ref_prod AND p1.ref_usine = p2.ref_usine
 JOIN magasin m1 ON p1.ref_mag = m1.ref_mag
 JOIN magasin m2 ON p2.ref_mag = m2.ref_mag
-WHERE p1.ref_prod = p2.ref_prod AND p1.ref_usine = p2.ref_usine AND p1.ref_mag <> p2.ref_mag;
+WHERE p1.ref_prod = p2.ref_prod AND p1.ref_usine = p2.ref_usine AND p1.ref_mag < p2.ref_mag;
 
 -- 14. Les noms des magasins qui s'approvisionnent en le produit de référence 12
 -- Avec une jointure
