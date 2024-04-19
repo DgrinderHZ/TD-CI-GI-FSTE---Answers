@@ -1,0 +1,34 @@
+-- SSN1
+SET TRANSACTION READ ONLY;
+
+
+SELECT * FROM EMP;
+
+UPDATE root.EMP 
+SET salaire = 2000
+WHERE nom = 'ALAOUI';
+
+
+LOCK TABLE emp IN EXCLUSIVE MODE;
+
+LOCK TABLE dept IN SHARE MODE;
+
+UPDATE dept
+SET nom = 'test'
+WHERE n_dept =20;
+
+
+
+
+-- SSN2
+
+UPDATE root.EMP 
+SET salaire = 1000
+WHERE nom = 'ALAOUI';
+
+SELECT * FROM EMP;
+
+LOCK TABLE dept IN SHARE MODE;
+
+LOCK TABLE emp IN EXCLUSIVE MODE;
+
