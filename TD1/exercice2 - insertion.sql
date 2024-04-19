@@ -49,3 +49,8 @@ VALUES
 INSERT INTO provenance (ref_prod, ref_usine, ref_mag, quantite)
 VALUES
 (3, 103, 203, 40);
+
+-- Insertion de données de test dans la table provenance
+INSERT INTO provenance (ref_prod, ref_usine, ref_mag, quantite) VALUES (1, 101, 201, 50);   -- produit 1, usine 101, magasin 201
+INSERT INTO provenance (ref_prod, ref_usine, ref_mag, quantite) VALUES (1, 101, 202, 30);   -- produit 1, usine 101, magasin 202
+INSERT INTO provenance (ref_prod, ref_usine, ref_mag, quantite) VALUES (2, 102, 203, 40);   -- produit 2, usine 102, magasin 203
