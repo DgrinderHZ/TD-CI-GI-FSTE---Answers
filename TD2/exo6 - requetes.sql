@@ -1,4 +1,4 @@
--- SSN1
+-- SESSION1
 SET TRANSACTION READ ONLY;
 
 
@@ -20,7 +20,7 @@ WHERE n_dept =20;
 
 
 
--- SSN2
+-- SESSION2
 
 UPDATE root.EMP 
 SET salaire = 1000

@@ -12,7 +12,6 @@ SET fonction = 'prof'
 WHERE nom = 'ALAOUI';
 commit;
 
-SET TRANSACTION READ ONLY;
 
 
 ------------ SESSION 2

@@ -9,7 +9,7 @@ DROP INDEX idx_nom;
 
 
 
--- our monter le nom de schema de la session
+-- Pour récupérer le nom de schema de la session
 SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') AS CURRENT_SCHEMA FROM DUAL;
 
 
