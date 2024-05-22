@@ -21,7 +21,6 @@ DECLARE
     v_login tableBonus.login%TYPE;
     v_bonus tableBonus.bonus%TYPE;
     v_nbrExLoues tableBonus.nbrExLoues%TYPE;
-    
 BEGIN
     FOR loc IN cur_locations LOOP
         v_bonus := 0;
@@ -41,8 +40,8 @@ END;
 
 -- c. Variante 01: Mise à jour de la table tableBonus avec les bonus selon v_n1 et v_n2
 DECLARE
-    v_n1 NUMBER := 5; -- Modifier la valeur selon le besoin
-    v_n2 NUMBER := 10; -- Modifier la valeur selon le besoin
+    v_n1 NUMBER := 1; -- Modifier la valeur selon le besoin
+    v_n2 NUMBER := 5; -- Modifier la valeur selon le besoin
 BEGIN
     FOR rec IN (SELECT * FROM tableBonus) LOOP
         IF rec.nbrExLoues = 0 THEN
@@ -59,12 +58,10 @@ BEGIN
 END;
 /
 
-/
-
 -- c. Variante 02: Mise à jour de la table tableBonus avec les bonus selon v_n1 et v_n2
 DECLARE
-    v_n1 NUMBER := 5; -- Modifier la valeur selon le besoin
-    v_n2 NUMBER := 10; -- Modifier la valeur selon le besoin
+    v_n1 NUMBER := 1; -- Modifier la valeur selon le besoin
+    v_n2 NUMBER := 5; -- Modifier la valeur selon le besoin
 BEGIN
     UPDATE tableBonus
     SET bonus = CASE 
