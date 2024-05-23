@@ -3,10 +3,10 @@ SET SERVEROUTPUT ON;
 
 -- Exercice 9. Création de la procédure pour afficher le nombre d'employés dépassant un âge limite par département
 CREATE OR REPLACE PROCEDURE afficher_employes_age_limite (age_limite NUMBER) IS
-    CURSOR c_departement (age_lim NUMBER) IS
+    CURSOR c_departement (pc_age_lim NUMBER) IS
         SELECT DEPARTEMENT, COUNT(*) AS nb_employes
         FROM EMPLOYE
-        WHERE AGE > age_lim
+        WHERE AGE > pc_age_lim
         GROUP BY DEPARTEMENT;
         
 BEGIN
