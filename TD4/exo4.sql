@@ -13,6 +13,6 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('Carré parfait ' || i || ' : ' || v_tableau(i));
     END LOOP;
 
-    EXCEPTION
+    -- Ajouter exception de depacement (range limit)
 END;
 /

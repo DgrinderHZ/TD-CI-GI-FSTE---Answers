@@ -33,7 +33,8 @@ BEGIN
 END;
 /
 
--- Maintenant on gère l'erreur après le cas de mise à jours
+SET SERVEROUTPUT ON;
+-- Maintenant on gère l'erreur du cas de mise à jours
 -- où :NEW.NOM_VILLE := NULL;
 CREATE OR REPLACE PROCEDURE insert_meteo_data(
     p_nom_ville METEO.NOM_VILLE%TYPE,
