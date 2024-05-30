@@ -7,8 +7,7 @@ SET SERVEROUTPUT ON;
 DECLARE
     v_nom EMPLOYE.NOM%TYPE;
 BEGIN
-    -- un curseur implicite dans une boucle FOR
-    FOR rec IN (
+    FOR rec IN ( -- un curseur implicite dans une boucle FOR
         SELECT NOM 
         FROM EMPLOYE
         WHERE DEPARTEMENT = 'Commercial' 

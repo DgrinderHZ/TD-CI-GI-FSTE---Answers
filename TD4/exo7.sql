@@ -16,7 +16,7 @@ INSERT INTO EMPLOYE (ID, NOM, DEPARTEMENT, AGE, SALAIRE) VALUES (4, 'David', 'Te
 INSERT INTO EMPLOYE (ID, NOM, DEPARTEMENT, AGE, SALAIRE) VALUES (5, 'Eve', 'Commercial', 40, 3500);
 
 
--- Exercice 7 : Augmentation de salaire et affichage du nombre d'employés affectés
+-- Exercice 7: Augmentation de salaire et affichage du nombre d'employés affectés
 SET SERVEROUTPUT ON;
 
 BEGIN
@@ -25,7 +25,8 @@ BEGIN
     SET SALAIRE = SALAIRE + 200
     WHERE DEPARTEMENT = 'Commercial';
     
-    -- Utiliser le dernier curseur implicite pour afficher le nombre d'employés affectés (3 employés pour notre jeu de données)
+    -- Utiliser le dernier curseur implicite pour afficher le nombre d'employés affectés 
+    -- (3 employés pour notre jeu de données)
     DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || ' employés ont eu une augmentation de salaire.');
 EXCEPTION
     WHEN OTHERS THEN
