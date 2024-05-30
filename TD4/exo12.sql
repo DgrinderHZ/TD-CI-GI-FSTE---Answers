@@ -14,7 +14,7 @@ CREATE TABLE PARTICIPANT (
 );
 
 -- Create SCORE table
-CREATE TABLE SCORE (
+CREATE TABLE SCORE(
     NO_PAR NUMBER,
     CODE_COMP VARCHAR2(10),
     NO_JUGE NUMBER,
@@ -42,7 +42,7 @@ SET SERVEROUTPUT ON;
 DECLARE
     v_nom_competition VARCHAR2(100);
     
-    CURSOR c_participants (p_nom_competition VARCHAR2) IS
+    CURSOR crsr_participants (p_nom_competition VARCHAR2) IS
         SELECT p.NO_PART, p.NOM_PART, p.DATENAISSANCE, p.ADRESSE, p.EMAIL, SUM(s.NOTE) AS TOTAL_SCORE
         FROM PARTICIPANT p
         JOIN SCORE s 
@@ -66,18 +66,18 @@ BEGIN
     v_nom_competition := '&v_nom_competition';
 
     -- Ouvrir le curseur
-    OPEN c_participants(v_nom_competition);
+    OPEN crsr_participants(v_nom_competition);
 
     -- Récupérer les participants et leurs scores totaux
     LOOP
-        FETCH c_participants 
+        FETCH crsr_participants 
         INTO v_no_part, v_nom_part,  v_date_naissance_part, v_adresse_part, v_email_part, v_total_score;
-        EXIT WHEN c_participants%NOTFOUND;
+        EXIT WHEN crsr_participants%NOTFOUND;
         DBMS_OUTPUT.PUT_LINE('Participant: ' || v_nom_part || ' (ID: ' || v_no_part || '), Total Score: ' || v_total_score);
     END LOOP;
 
     -- Fermer le curseur
-    CLOSE c_participants;
+    CLOSE crsr_participants;
 END;
 /
 
@@ -86,7 +86,7 @@ END;
 -- Exercice 12. VARIANTE 01
 DECLARE
     v_nom_competition VARCHAR2(100);
-    CURSOR c_participants (p_nom_competition VARCHAR2) IS
+    CURSOR crsr_participants (p_nom_competition VARCHAR2) IS
         SELECT p.NO_PART, p.NOM_PART, SUM(s.NOTE) AS TOTAL_SCORE
         FROM PARTICIPANT p
         JOIN SCORE s ON p.NO_PART = s.NO_PAR
@@ -102,16 +102,16 @@ BEGIN
     v_nom_competition := '&v_nom_competition';
 
     -- Ouvrir le curseur
-    OPEN c_participants(v_nom_competition);
+    OPEN crsr_participants(v_nom_competition);
 
     -- Récupérer les participants et leurs scores totaux
     LOOP
-        FETCH c_participants INTO v_no_part, v_nom_part, v_total_score;
-        EXIT WHEN c_participants%NOTFOUND;
+        FETCH crsr_participants INTO v_no_part, v_nom_part, v_total_score;
+        EXIT WHEN crsr_participants%NOTFOUND;
         DBMS_OUTPUT.PUT_LINE('Participant: ' || v_nom_part || ' (ID: ' || v_no_part || '), Total Score: ' || v_total_score);
     END LOOP;
 
     -- Fermer le curseur
-    CLOSE c_participants;
+    CLOSE crsr_participants;
 END;
 /

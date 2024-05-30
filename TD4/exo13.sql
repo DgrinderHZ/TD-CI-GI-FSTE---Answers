@@ -1,6 +1,6 @@
 SET SERVEROUTPUT ON;
 
-CREATE OR REPLACE TRIGGER trg_check_competition_code
+CREATE OR REPLACE TRIGGER trgr_check_competition_code
 BEFORE INSERT ON COMPETITION
 FOR EACH ROW
 DECLARE 
@@ -17,8 +17,40 @@ EXCEPTION
 END;
 /
 
--- Vous pouvez gérer l'erreur ORA-01400 cannot insert NULL 
--- Avec le même principe de l'exercice 11
-INSERT INTO COMPETITION (CODE_COMP, NOM_COMPETITION) VALUES ('CMP003', 'Competition C'); -- pas d'erreur
-INSERT INTO COMPETITION (CODE_COMP, NOM_COMPETITION) VALUES ('CP003', 'Competition D'); -- ops!
+-- Testing 
+
+-- Création d'une procédure pour gérer l'insertion et gérer l'erreur ORA-01400
+CREATE OR REPLACE PROCEDURE insert_competition (
+    p_code_comp IN VARCHAR2,
+    p_nom_competition IN VARCHAR2
+) 
+IS
+BEGIN
+    -- Tentative d'insertion de la nouvelle compétition
+    INSERT INTO COMPETITION (CODE_COMP, NOM_COMPETITION) 
+    VALUES (p_code_comp, p_nom_competition);
+
+    DBMS_OUTPUT.put_line('Insertion réussie pour la compétition : ' || p_nom_competition);
+
+EXCEPTION
+    WHEN OTHERS THEN
+        IF SQLCODE = -1400 THEN
+            DBMS_OUTPUT.put_line('Erreur : Le code de la compétition ne peut pas être NULL.');
+        ELSE
+            DBMS_OUTPUT.put_line('Erreur : ' || SQLERRM);
+        END IF;
+END;
+/
+
+-- Test de la procédure avec des codes de compétition valides et invalides
+BEGIN
+    -- Insertion valide
+    insert_competition('CMP003', 'Competition C');
+
+    -- Insertion invalide
+    insert_competition('CP003', 'Competition D');
+END;
+/
+
+
 
