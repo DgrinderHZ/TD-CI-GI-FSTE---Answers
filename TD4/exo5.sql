@@ -11,6 +11,7 @@ INSERT INTO PILOTE (Matricule, Nom, Ville, Age, Salaire) VALUES (2, 'Durand', 'L
 INSERT INTO PILOTE (Matricule, Nom, Ville, Age, Salaire) VALUES (3, 'Martin', 'Marseille', 45, 60000);
 INSERT INTO PILOTE (Matricule, Nom, Ville, Age, Salaire) VALUES (4, 'Lefevre', 'Toulouse', 32, 48000);
 
+SET SERVEROUTPUT ON;
 
 -- Exercice 5 : Calcul de la moyenne des salaires des pilotes âgés de 30 à 40 ans
 DECLARE

@@ -4,8 +4,8 @@ CREATE TABLE RES (
 );
 
 SET SERVEROUTPUT ON;
--- Exercice 2 : Insertion des chiffres de 1 à 100 dans la table RES
 
+-- Exercice 2 : Insertion des chiffres de 1 à 100 dans la table RES
 DECLARE 
     v_deb  NUMBER := 1;
     v_fin  NUMBER := 100;

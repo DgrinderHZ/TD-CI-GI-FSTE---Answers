@@ -1,4 +1,5 @@
 SET SERVEROUTPUT ON;
+
 -- Exercice 3 : Affichage de la somme des nombres entre 1000 et 10000
 DECLARE
     v_somme NUMBER := 0;
