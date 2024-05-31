@@ -53,6 +53,8 @@ BEGIN
             ) 
             LOOP
                 -- Insertion d'escale
+                -- TODO: stocker dans une collection
+                -- pour éviter les vols non pertinente
                 INSERT INTO ESCALE(numvol, ville_escale, durée_escale) 
                 VALUES (vol_final.Numvol, vol_final.Ville_depart, 1.5); -- 1.5 heures
             END LOOP; -- FOR vol_final
@@ -68,6 +70,8 @@ BEGIN
             WHERE Ville_depart = vol_vers_escale_inter.Ville_arrivee;
 
             IF v_nbr_vol >= 1 THEN
+                -- TODO: stocker dans une collection
+                -- pour éviter les vols non pertinente
                 -- Insertion d'escale
                 INSERT INTO ESCALE(numvol, ville_escale, durée_escale)
                 VALUES(vol_vers_escale_inter.Numvol, vol_vers_escale_inter.Ville_arrivee, 1.5); -- 1.5 heures
@@ -77,6 +81,7 @@ BEGIN
             END IF;
         END LOOP; -- FOR vol_vers_escale_inter
     END IF;
+
 END;
 /
 
