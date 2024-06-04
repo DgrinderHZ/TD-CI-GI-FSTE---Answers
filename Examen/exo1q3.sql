@@ -1,9 +1,7 @@
 SET SERVEROUTPUT ON;
-
-DECLARE
-    v_avion AVION%ROWTYPE; -- 0.25pts 
+ 
 BEGIN
-    FOR r_avion IN ( -- 0.25 pts
+    FOR r_avion IN ( -- 0.5 pts
         SELECT numav, nomav, loc -- 0.25 pts
         FROM AVION 
         WHERE CAPACITE >= 50 -- 0.25 pts

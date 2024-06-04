@@ -3,13 +3,12 @@ SET SERVEROUTPUT ON;
 CREATE OR REPLACE PROCEDURE profilePilote(p_numpil IN INT) IS -- 0.25 pts
     -- 0.5 pts
     v_pilote PILOTE%ROWTYPE;
-    e_pilote_not_found EXCEPTION;
 BEGIN
     
-    SELECT *   -- 0.5 pts
-    INTO v_pilote 
+    SELECT *   
+    INTO v_pilote -- 0.25
     FROM PILOTE 
-    WHERE NUMPIL = p_numpil;
+    WHERE NUMPIL = p_numpil; -- 0.25 pts
     
     -- 0.25 pts
     DBMS_OUTPUT.PUT_LINE('NUMPIL: ' || v_pilote.NUMPIL || ', NOMPIL: ' || v_pilote.NOMPIL || ', ADR: ' || v_pilote.ADR || ', SAL: ' || v_pilote.SAL);

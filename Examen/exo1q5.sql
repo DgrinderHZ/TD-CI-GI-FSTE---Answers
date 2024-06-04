@@ -1,13 +1,14 @@
 SET SERVEROUTPUT ON;
 
 DECLARE
+    -- 0.25 pts
     v_numvol INT := 101;
     v_numav INT;
     v_numpil INT;
     v_exists INT;
     v_avion_exists INT;
     v_pilot_exists INT;
-    -- 0.25 pts
+    
     e_vol_exists EXCEPTION;
     e_pilote_not_found EXCEPTION;
     e_avion_not_found EXCEPTION;

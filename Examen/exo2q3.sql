@@ -5,8 +5,8 @@ AFTER INSERT ON VOL  -- 0.25 pts
 FOR EACH ROW -- 0.25 pts
 BEGIN
     UPDATE TRACK_VOLS -- 0.25 pts
-    SET NB_VOLS = NB_VOLS + 1   -- 0.25 pts
-    WHERE NUMPIL = :NEW.NUMPIL;  -- 0.25 pts
+    SET NB_VOLS = NB_VOLS + 1   -- 0.5 pts
+    WHERE NUMPIL = :NEW.NUMPIL;  -- 0.5 pts
 END;
 /
 

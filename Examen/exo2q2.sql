@@ -6,12 +6,12 @@ IS
     v_cpt INT;
 BEGIN
 
-    SELECT COUNT(*)  -- 0.5 pts
-    INTO v_cpt 
+    SELECT COUNT(*) -- 0.25 pts
+    INTO v_cpt -- 0.25 pts
     FROM PILOTE p
     WHERE p.ADR = 'Er-Rachidia'  -- 0.25 pts
-    AND p.NUMPIL NOT IN (  -- 0.5 pts
-        SELECT NUMPIL 
+    AND p.NUMPIL NOT IN (  -- 0.25 pts
+        SELECT NUMPIL -- 0.25 pts
         FROM VOL
     );
     
