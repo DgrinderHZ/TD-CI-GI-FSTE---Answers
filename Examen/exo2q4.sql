@@ -1,10 +1,10 @@
 SET SERVEROUTPUT ON;
 
- -- 0.25 pts
+ -- 0.5 pts
 CREATE OR REPLACE TYPE VARRAY_NUMPIL AS VARRAY(100) OF INT;
 /
 
-CREATE OR REPLACE FUNCTION tab_pilotes(fp_sal IN INT) 
+CREATE OR REPLACE FUNCTION tab_pilotes(fp_sal IN INT) -- 0.25 pts
 RETURN VARRAY_NUMPIL IS
     v_pilote_tab VARRAY_NUMPIL := VARRAY_NUMPIL();  -- 0.25 pts
     v_index INT := 0;
