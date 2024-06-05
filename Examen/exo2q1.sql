@@ -11,7 +11,10 @@ BEGIN
     WHERE NUMPIL = p_numpil; -- 0.25 pts
     
     -- 0.25 pts
-    DBMS_OUTPUT.PUT_LINE('NUMPIL: ' || v_pilote.NUMPIL || ', NOMPIL: ' || v_pilote.NOMPIL || ', ADR: ' || v_pilote.ADR || ', SAL: ' || v_pilote.SAL);
+    DBMS_OUTPUT.PUT_LINE('NUMPIL: ' || 
+    v_pilote.NUMPIL || ', NOMPIL: ' || 
+    v_pilote.NOMPIL || ', ADR: ' || 
+    v_pilote.ADR || ', SAL: ' || v_pilote.SAL);
 
 EXCEPTION  -- 0.5 pts
     WHEN NO_DATA_FOUND THEN 

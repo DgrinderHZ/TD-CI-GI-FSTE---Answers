@@ -10,7 +10,11 @@ DECLARE
 BEGIN
     FOR r_pilote IN c_pilotes_vol LOOP -- 0.5 pts
         -- 0.5 pts
-        DBMS_OUTPUT.PUT_LINE('NUMPIL: ' || r_pilote.NUMPIL || ', NOMPIL: ' || r_pilote.NOMPIL);
+        DBMS_OUTPUT.PUT_LINE('NUMPIL: ' ||
+         r_pilote.NUMPIL || 
+         ', NOMPIL: ' || r_pilote.NOMPIL);
     END LOOP;
 END;
 /
+
+

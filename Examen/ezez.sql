@@ -70,3 +70,63 @@ BEGIN
     END LOOP;
 END;
 /
+
+
+
+------------------------------------ ou
+SET SERVEROUTPUT ON;
+
+DECLARE
+    -- 0.25 pts
+    v_numvol INT := 101;
+    v_numav INT;
+    v_numpil INT;
+    v_exists INT;
+    v_avion_exists INT;
+    v_pilot_exists INT;
+    
+    e_vol_exists EXCEPTION;
+    e_pilote_not_found EXCEPTION;
+    e_avion_not_found EXCEPTION;
+BEGIN
+    -- Saisie des numéros d'avion et pilote par l'utilisateur  -- 0.25 pts
+    v_numav := &NUMAV;
+    v_numpil := &NUMPIL;
+
+  
+
+    FOR vol IN (
+        SELECT * 
+            FROM VOL 
+            WHERE NUMPIL = v_numpil 
+              AND NUMAV = v_numav
+              AND VILLE_DEP = 'Er-Rachidia' 
+              AND VILLE_ARR = 'Marrakech' 
+              AND H_DEP = TO_TIMESTAMP('2024-06-03 18:00:00', 'YYYY-MM-DD HH24:MI:SS') 
+              AND H_ARR = TO_TIMESTAMP('2024-06-03 19:10:00', 'YYYY-MM-DD HH24:MI:SS')
+        ) LOOP
+        if vol not null then -- Vérification si le vol existe déjà -- 0.25 pts
+            RAISE e_vol_exists;
+        else
+             -- Insertion du vol -- 0.25 pts
+            INSERT INTO VOL (NUMVOL, NUMPIL, NUMAV, VILLE_DEP, VILLE_ARR, H_DEP, H_ARR) VALUES 
+            (v_numvol, v_numpil, v_numav, 'Er-Rachidia', 'Marrakech', 
+            -- 0.25 pts timestamp
+            TO_TIMESTAMP('2024-06-03 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), 
+            TO_TIMESTAMP('2024-06-03 19:10:00', 'YYYY-MM-DD HH24:MI:SS'));
+            
+            DBMS_OUTPUT.PUT_LINE('Vol inséré avec succès.');
+        end if;
+    END LOOP;
+    
+EXCEPTION
+    -- 0.25 pts
+    WHEN e_vol_exists THEN
+        DBMS_OUTPUT.PUT_LINE('Erreur : le vol existe déjà.');
+    WHEN e_pilote_not_found THEN
+        DBMS_OUTPUT.PUT_LINE('Erreur : le numéro de pilote n''existe pas.');
+    WHEN e_avion_not_found THEN
+        DBMS_OUTPUT.PUT_LINE('Erreur : le numéro d''avion n''existe pas.');
+END;
+/
+

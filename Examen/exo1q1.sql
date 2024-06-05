@@ -8,7 +8,9 @@ BEGIN
     ) 
     LOOP
         -- 0.5 pts
-        DBMS_OUTPUT.PUT_LINE('NUMPIL: ' || r_pilote.NUMPIL || ', NOMPIL: ' || r_pilote.NOMPIL || ', ADR: ' || r_pilote.ADR || ', SAL: ' || r_pilote.SAL);
+        DBMS_OUTPUT.PUT_LINE('NUMPIL: ' || r_pilote.NUMPIL ||
+         ', NOMPIL: ' || r_pilote.NOMPIL || ', ADR: ' ||
+          r_pilote.ADR || ', SAL: ' || r_pilote.SAL);
     END LOOP;
 END;
 /
