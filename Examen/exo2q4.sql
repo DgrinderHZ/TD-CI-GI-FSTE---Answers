@@ -16,7 +16,7 @@ RETURN VARRAY_NUMPIL IS
         WHERE SAL >= p_salaire;    
 BEGIN
     FOR r_pilote IN c_pilotes(fp_sal) LOOP  -- 0.25 pts
-        IF v_pilote_tab.COUNT < 100 THEN  -- 0.25 pts
+        IF v_pilote_tab.COUNT <= 100 THEN  -- 0.25 pts
             v_pilote_tab.EXTEND;  -- 0.25 pts
             v_pilote_tab(v_index + 1) := r_pilote.NUMPIL; -- 0.25 pts
             v_index := v_index + 1;   -- 0.25 pts
@@ -67,12 +67,12 @@ BEGIN
     -- réponse non complete mais acceptée
     -- (il faut parcourir le courseur et ajouter son contenu,
     -- si on a plus d'un pilotes, on se contente des 100 premier)
-    OPEN  c_pilotes(fp_sal);  -- 0.25 pts
-        FOR i IN 1..100 LOOP  -- 0.25 pts
+    OPEN  c_pilotes(fp_sal);  
+        FOR i IN 1..100 LOOP  
                 FETCH c_pilotes INTO  v_num; -- 0.25 pts
                 v_pilote_tab.EXTEND;  -- 0.25 pts
                  v_index :=  v_pilote_tab.LAST;   -- 0.25 pts
-                v_pilote_tab(v_index) := v_num; -- 0.5 pts
+                v_pilote_tab(v_index) := v_num; -- 0 .25 pts
         END LOOP;
     CLOSE c_pilotes;
     RETURN v_pilote_tab; -- 0.25 pts

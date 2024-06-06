@@ -2,10 +2,26 @@ SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE TRIGGER trgr_update_track_vols -- 0.25 pts
 AFTER INSERT ON VOL  -- 0.25 pts
-FOR EACH ROW -- 0.25 pts
+FOR EACH ROW -- 0.25 pts (pour utilise NEW and OLD)
 BEGIN
     UPDATE TRACK_VOLS -- 0.25 pts
     SET NB_VOLS = NB_VOLS + 1   -- 0.5 pts
+    WHERE NUMPIL = :NEW.NUMPIL;  -- 0.5 pts
+END;
+/
+
+---- ou 
+CREATE OR REPLACE TRIGGER trgr_update_track_vols -- 0.25 pts
+AFTER INSERT ON VOL  -- 0.25 pts
+FOR EACH ROW -- 0.25 pts (pour utilise NEW and OLD)
+DECLARE
+    v_n INT;
+BEGIN
+    SELECT NB_VOLS INTO v_n FROM TRACK_VOLS  WHERE numpil = :NEW.numpil;
+    v_n := v_n + 1;
+    
+    UPDATE TRACK_VOLS -- 0.25 pts
+    SET NB_VOLS = v_n  -- 0.5 pts
     WHERE NUMPIL = :NEW.NUMPIL;  -- 0.5 pts
 END;
 /
